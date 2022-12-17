@@ -1,7 +1,7 @@
 {% set name = "bipedal-locomotion-framework" %}
 {% set namecxx = "libbipedal-locomotion-framework" %}
 {% set namepython = "bipedal-locomotion-framework-python" %}
-{% set version = "0.10.0" %}
+{% set version = "0.11.0" %}
 
 package:
   name: {{ name }}
@@ -14,7 +14,7 @@ source:
     - 564.patch
 
 build:
-  number: 3
+  number: 0
 
 outputs:
   - name: {{ namecxx }}
@@ -113,6 +113,7 @@ outputs:
         - python
         - numpy
         - manifpy
+        - idyntree
     test:
       commands:
         - test $(pip list | grep bipedal_locomotion_framework | tr -s " " | grep $PKG_VERSION | wc -l) -eq 1  # [unix]
