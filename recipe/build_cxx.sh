@@ -5,7 +5,7 @@ if [[ "${target_platform}" == osx-* ]]; then
     CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
 fi
 
-mkdir build
+mkdir -p build
 cd build
 
 cmake ${CMAKE_ARGS} -GNinja .. \
