@@ -27,7 +27,7 @@ libboost_devel:
 libmatio_cpp:
 - 0.2.5
 libopencv:
-- 4.9.0
+- 4.10.0
 libosqp:
 - 0.6.3
 libyarp:
