@@ -68,8 +68,6 @@ outputs:
         - libunicycle-footstep-planner
         - librealsense  # [not win]
         - xorg-libxfixes  # [linux]
-        # Workaround for https://github.com/conda-forge/pcl-feedstock/pull/68
-        - vtk * qt*
       run:
         # manif and eigen are mentioned in the headers so needed when building
         # against libbipedal-locomotion-framework
@@ -77,7 +75,8 @@ outputs:
         - eigen
         - liblie-group-controllers
         - tomlplusplus
-
+        # See https://github.com/conda-forge/bipedal-locomotion-framework-feedstock/pull/69#issuecomment-2199462702
+        - vtk * qt*  # [not win]
 
     test:
       commands:
