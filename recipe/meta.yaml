@@ -64,6 +64,8 @@ outputs:
         - libopencv
         - pcl
         - onnxruntime-cpp
+        # Only required for testing
+        - catch2
         # transitive public dependency of pcl
         - vtk-base
         - liblie-group-controllers
