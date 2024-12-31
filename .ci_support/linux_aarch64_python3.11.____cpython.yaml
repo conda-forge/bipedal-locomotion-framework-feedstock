@@ -30,6 +30,8 @@ libopencv:
 - 4.10.0
 libosqp:
 - 0.6.3
+librealsense:
+- '2.54'
 libyarp:
 - 3.10.1
 numpy:
@@ -49,7 +51,7 @@ python:
 qhull:
 - '2020.2'
 spdlog:
-- '1.14'
+- '1.15'
 target_platform:
 - linux-aarch64
 vtk_base:
