@@ -1,5 +1,5 @@
 MACOSX_DEPLOYMENT_TARGET:
-- '10.13'
+- '11.0'
 MACOSX_SDK_VERSION:
 - '11.0'
 c_compiler:
@@ -9,7 +9,7 @@ c_compiler_version:
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
-- '10.13'
+- '11.0'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -35,7 +35,7 @@ librealsense:
 libyarp:
 - 3.12.0
 macos_machine:
-- x86_64-apple-darwin13.4.0
+- arm64-apple-darwin20.0.0
 numpy:
 - '1.26'
 pcl:
@@ -49,13 +49,13 @@ pugixml:
 pybind11_abi:
 - '4'
 python:
-- 3.9.* *_cpython
+- 3.13.* *_cp313
 qhull:
 - '2020.2'
 spdlog:
 - '1.15'
 target_platform:
-- osx-64
+- osx-arm64
 vtk:
 - 9.4.2
 zip_keys:

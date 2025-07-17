@@ -49,7 +49,7 @@ pugixml:
 pybind11_abi:
 - '4'
 python:
-- 3.9.* *_cpython
+- 3.13.* *_cp313
 qhull:
 - '2020.2'
 spdlog:
