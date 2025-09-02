@@ -1,0 +1,25 @@
+From 28e59f7c298d34a8b0b9dce836f542d4e86212d8 Mon Sep 17 00:00:00 2001
+From: Silvio Traversaro <silvio.traversaro@iit.it>
+Date: Wed, 23 Jul 2025 09:11:35 +0200
+Subject: [PATCH] Use np.inf instead of np.infty in test_TSID.py for NumPy 2.0
+ compatibility
+
+---
+ bindings/python/TSID/tests/test_TSID.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/bindings/python/TSID/tests/test_TSID.py b/bindings/python/TSID/tests/test_TSID.py
+index ff34a0e5f6..3cc75c4462 100644
+--- a/bindings/python/TSID/tests/test_TSID.py
++++ b/bindings/python/TSID/tests/test_TSID.py
+@@ -336,8 +336,8 @@ def test_variable_feasible_region_task():
+ 
+     # Test infinite bounds (correct case)
+     C = np.array([[1, 2], [0, 1]])
+-    l = np.array([-np.infty, 0])
+-    u = np.array([1, np.infty])
++    l = np.array([-np.inf, 0])
++    u = np.array([1, np.inf])
+     assert task_2.set_feasible_region(C, l, u)
+ 
+     # Test inconsistency with the variable size = 2 (incorrect case)
