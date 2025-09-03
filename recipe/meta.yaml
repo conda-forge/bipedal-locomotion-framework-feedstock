@@ -16,7 +16,7 @@ source:
     - 999.patch
 
 build:
-  number: 5
+  number: 6
 
 outputs:
   # {{ namecxx }}
