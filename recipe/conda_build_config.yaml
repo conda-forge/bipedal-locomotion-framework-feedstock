@@ -2,7 +2,8 @@
 MACOSX_SDK_VERSION:        # [osx and x86_64]
   - "11.0"                 # [osx and x86_64]
 
-# Inherited from YARP, see
+# Inherited from YARP and OpenCV, see
 # https://github.com/conda-forge/yarp-feedstock/blob/61774c75c96a20227c23596573e8845ff5fd8b63/recipe/conda_build_config.yaml#L1C1-L3C32
+# and https://github.com/conda-forge/opencv-feedstock/commit/4cbeca04ab402c259696f4c89a25ae7952e7acdd
 c_stdlib_version:          # [osx and x86_64]
-  - '10.15'                # [osx and x86_64]
+  - '11.00'                # [osx and x86_64]
