@@ -1,7 +1,6 @@
 # Required for UniformTypeIdentifiers and to align with opencv
-# https://github.com/conda-forge/opencv-feedstock/blob/5f0a5d489a2515aba58a379486c53486aa7d3c9e/recipe/conda_build_config.yaml#L2
 MACOSX_SDK_VERSION:        # [osx and x86_64]
-  - "12.3"                 # [osx and x86_64]
+  - "11.0"                 # [osx and x86_64]
 
 # Inherited from YARP and OpenCV, see
 # https://github.com/conda-forge/yarp-feedstock/blob/61774c75c96a20227c23596573e8845ff5fd8b63/recipe/conda_build_config.yaml#L1C1-L3C32
