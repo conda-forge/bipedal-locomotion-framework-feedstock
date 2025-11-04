@@ -19,7 +19,7 @@ docker_image:
 fmt:
 - '11.2'
 idyntree:
-- '13'
+- '14'
 libboost_devel:
 - '1.88'
 libmatio_cpp:
@@ -34,6 +34,8 @@ libyarp:
 - 3.12.1
 numpy:
 - '2'
+osqp_eigen:
+- '0.11'
 pcl:
 - 1.15.1
 pin_run_as_build:
