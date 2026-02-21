@@ -70,6 +70,7 @@ outputs:
         - libunicycle-footstep-planner
         - librealsense  # [not win]
         - xorg-libxfixes  # [linux]
+        - eigen-abi-devel
       run:
         # manif and eigen are mentioned in the headers so needed when building
         # against libbipedal-locomotion-framework
