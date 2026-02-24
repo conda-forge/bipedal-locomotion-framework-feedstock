@@ -14,7 +14,7 @@ source:
   sha256: fc8e37612ba1661b24566e0d2ac4d1ef2acc1c7f2380ed1835a6f4af744125ba
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   # {{ namecxx }}
@@ -61,6 +61,7 @@ outputs:
         - pcl
         - onnxruntime-cpp
         - tiny-process-library
+        - libtrintrin
         - libgl-devel  # [linux]
         # Only required for testing
         - catch2
@@ -83,10 +84,14 @@ outputs:
         - test -f ${PREFIX}/include/BipedalLocomotion/System/Advanceable.h  # [unix]
         - test -f ${PREFIX}/lib/libBipedalLocomotionFrameworkSystem${SHLIB_EXT}  # [unix]
         - test -f ${PREFIX}/lib/cmake/BipedalLocomotionFramework/BipedalLocomotionFrameworkConfig.cmake  # [not win]
+        - test -f ${PREFIX}/lib/yarp/VectorsCollectionWrapper.so  # [unix]
+        - test -f ${PREFIX}/lib/yarp/YarpRobotLoggerDevice.so  # [unix]
         - if not exist %PREFIX%\\Library\\include\\BipedalLocomotion\\System\\Advanceable.h exit 1  # [win]
         - if not exist %PREFIX%\\Library\\lib\\BipedalLocomotionFrameworkSystem.lib exit 1  # [win]
         - if not exist %PREFIX%\\Library\\bin\\BipedalLocomotionFrameworkSystem.dll exit 1  # [win]
         - if not exist %PREFIX%\\Library\\CMake\\BipedalLocomotionFrameworkConfig.cmake exit 1  # [win]
+        - if not exist %PREFIX%\\Library\\lib\\yarp\\VectorsCollectionWrapper.dll exit 1  # [win]
+        - if not exist %PREFIX%\\Library\\lib\\yarp\\YarpRobotLoggerDevice.dll exit 1  # [win]
 
   # {{ namepython }}
   - name: bipedal-locomotion-framework-python
