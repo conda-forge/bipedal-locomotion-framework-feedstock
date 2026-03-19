@@ -41,6 +41,7 @@ outputs:
         - qt6-main  # [build_platform != target_platform and not ppc64le]
       host:
         - eigen
+        - eigen-abi-devel
         - idyntree
         - manif
         - libyarp
