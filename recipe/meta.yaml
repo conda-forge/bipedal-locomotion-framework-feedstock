@@ -136,6 +136,7 @@ outputs:
         - libboost-devel
         - pugixml
         - pcl
+        - eigen-abi-devel
         - libgl-devel  # [linux]
         - xorg-libxfixes  # [linux]
         - icub-models # Requested just for tests
