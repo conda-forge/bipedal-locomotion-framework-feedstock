@@ -3,7 +3,7 @@
 {% set name = "bipedal-locomotion-framework" %}
 {% set namecxx = "libbipedal-locomotion-framework" %}
 {% set namepython = "bipedal-locomotion-framework-python" %}
-{% set version = "0.23.1" %}
+{% set version = "0.24.0" %}
 
 package:
   name: bipedal-locomotion-framework-split
@@ -11,10 +11,10 @@ package:
 
 source:
   url: https://github.com/ami-iit/bipedal-locomotion-framework/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: c2a76a354a87dc2a1d2361097dfe1d86775e5cfdf6eb1f7e81079cccd02a98ea
+  sha256: 811fd695a378630e0f5ff47a91c99cd4ada60d01ec228c89e5d7ec12280f7c04
 
 build:
-  number: 1
+  number: 0
 
 outputs:
   # {{ namecxx }}
@@ -41,6 +41,7 @@ outputs:
         - qt6-main  # [build_platform != target_platform and not ppc64le]
       host:
         - eigen
+        - eigen-abi-devel
         - idyntree
         - manif
         - libyarp
@@ -135,6 +136,7 @@ outputs:
         - libboost-devel
         - pugixml
         - pcl
+        - eigen-abi-devel
         - libgl-devel  # [linux]
         - xorg-libxfixes  # [linux]
         - icub-models # Requested just for tests
