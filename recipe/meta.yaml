@@ -12,9 +12,11 @@ package:
 source:
   url: https://github.com/ami-iit/bipedal-locomotion-framework/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 811fd695a378630e0f5ff47a91c99cd4ada60d01ec228c89e5d7ec12280f7c04
+  patches:
+    - 1027.patch
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   # {{ namecxx }}
@@ -83,11 +85,13 @@ outputs:
     test:
       commands:
         - test -f ${PREFIX}/include/BipedalLocomotion/System/Advanceable.h  # [unix]
+        - test -f ${PREFIX}/include/BipedalLocomotion/bindings/System/Advanceable.h  # [unix]
         - test -f ${PREFIX}/lib/libBipedalLocomotionFrameworkSystem${SHLIB_EXT}  # [unix]
         - test -f ${PREFIX}/lib/cmake/BipedalLocomotionFramework/BipedalLocomotionFrameworkConfig.cmake  # [not win]
         - test -f ${PREFIX}/lib/yarp/VectorsCollectionWrapper.so  # [unix]
         - test -f ${PREFIX}/lib/yarp/YarpRobotLoggerDevice.so  # [unix]
         - if not exist %PREFIX%\\Library\\include\\BipedalLocomotion\\System\\Advanceable.h exit 1  # [win]
+        - if not exist %PREFIX%\\Library\\include\\BipedalLocomotion\\bindings\\System\\Advanceable.h exit 1  # [win]
         - if not exist %PREFIX%\\Library\\lib\\BipedalLocomotionFrameworkSystem.lib exit 1  # [win]
         - if not exist %PREFIX%\\Library\\bin\\BipedalLocomotionFrameworkSystem.dll exit 1  # [win]
         - if not exist %PREFIX%\\Library\\CMake\\BipedalLocomotionFrameworkConfig.cmake exit 1  # [win]
