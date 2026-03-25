@@ -17,16 +17,16 @@ index 3a054682be..cf90c7d1fc 100644
 @@ -48,9 +48,6 @@ if(FRAMEWORK_COMPILE_PYTHON_BINDINGS)
      # It is used for the Python tests.
      set(BLF_PYTHON_PACKAGE "${CMAKE_BINARY_DIR}/bipedal_locomotion_framework")
- 
+
 -    # Add the bindings directory
 -    add_subdirectory(python)
 -
      # Create the __init__.py file
      file(WRITE ${BLF_PYTHON_PACKAGE}/__init__.py "")
- 
+
 @@ -103,3 +100,7 @@ if(FRAMEWORK_COMPILE_PYTHON_BINDINGS)
      endif()
- 
+
  endif()
 +
 +# Add the bindings directory, this is done even if FRAMEWORK_COMPILE_PYTHON_BINDINGS is OFF
@@ -39,7 +39,7 @@ index 3504ab2dbb..cba885bcf6 100644
 @@ -22,69 +22,73 @@ add_subdirectory(SimplifiedModelControllers)
  add_subdirectory(RobotDynamicsEstimator)
  add_subdirectory(JointLevelControllers)
- 
+
 -include(ConfigureFileWithCMakeIfTarget)
 -
 -configure_file_with_cmakeif_target(${CMAKE_CURRENT_SOURCE_DIR}/bipedal_locomotion_framework.cpp.in
@@ -109,46 +109,46 @@ index 3504ab2dbb..cba885bcf6 100644
 +if(FRAMEWORK_COMPILE_PYTHON_BINDINGS)
 +
 +  include(ConfigureFileWithCMakeIfTarget)
-+  
++
 +  configure_file_with_cmakeif_target(${CMAKE_CURRENT_SOURCE_DIR}/bipedal_locomotion_framework.cpp.in
 +    ${CMAKE_CURRENT_BINARY_DIR}/bipedal_locomotion_framework.cpp
 +    @ONLY)
-+  
++
 +  get_property(pybind_headers GLOBAL PROPERTY pybind_headers)
 +  get_property(pybind_sources GLOBAL PROPERTY pybind_sources)
 +  get_property(pybind_include_dirs GLOBAL PROPERTY pybind_include_dirs)
 +  get_property(pybind_link_libraries GLOBAL PROPERTY pybind_link_libraries)
 +  get_property(pybind_compile_definitions GLOBAL PROPERTY pybind_compile_definitions)
-+  
++
 +  pybind11_add_module(pybind11_blf MODULE
 +    ${CMAKE_CURRENT_BINARY_DIR}/bipedal_locomotion_framework.cpp
 +    ${pybind_sources}
 +    ${pybind_headers}
 +    )
-+  
++
 +  target_compile_features(pybind11_blf PUBLIC cxx_std_17)
 +  target_include_directories(pybind11_blf PUBLIC "$<BUILD_INTERFACE:${pybind_include_dirs}>")
 +  target_compile_definitions(pybind11_blf PRIVATE ${pybind_compile_definitions})
-+  
++
 +  target_link_libraries(pybind11_blf PRIVATE
 +    ${pybind_link_libraries})
-+  
++
 +  # # The generated Python dynamic module must have the same name as the pybind11
 +  # # module, i.e. `bindings`.
 +  set_target_properties(pybind11_blf PROPERTIES
 +      LIBRARY_OUTPUT_DIRECTORY $<1:${BLF_PYTHON_PACKAGE}> # Prevent appending Release/Debug to the output path in Windows
 +      OUTPUT_NAME "bindings")
-+  
++
 +  if(FRAMEWORK_TEST_PYTHON_BINDINGS)
 +      add_subdirectory(tests)
-+  
++
 +      # copy the utils.py file for the tests
 +      add_custom_command(TARGET pybind11_blf POST_BUILD
 +        COMMAND ${CMAKE_COMMAND} -E copy
 +        ${CMAKE_CURRENT_SOURCE_DIR}/utils.py
 +        ${BLF_PYTHON_PACKAGE}/utils.py)
-+  
-+  
++
++
 +      # For testing on Windows we copy the blf .dll in the same
 +      # directory of the bindings
 +      if(WIN32)
@@ -158,23 +158,23 @@ index 3504ab2dbb..cba885bcf6 100644
 +              $<TARGET_FILE_DIR:pybind11_blf>)
 +      endif()
 +  endif()
-+  
++
 +  # Output package is:
 +  #
 +  # bipedal_locomotion
 +  # |-- __init__.py (generated from main bindings CMake file)
 +  # `-- bindings.<cpython_extension>
 +  # `-- utils.py
-+  
++
 +  install(TARGETS pybind11_blf DESTINATION ${PYTHON_INSTDIR})
-+  
++
 +  # Install the __init__.py file
 +  install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/all.py"
 +    DESTINATION ${PYTHON_INSTDIR})
-+  
++
 +  install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/utils.py"
 +    DESTINATION ${PYTHON_INSTDIR})
-+  
++
 +endif()
 \ No newline at end of file
 diff --git a/cmake/AddBipedalLocomotionPythonModule.cmake b/cmake/AddBipedalLocomotionPythonModule.cmake
@@ -183,14 +183,14 @@ index b552a02f4c..5c553a80d4 100644
 +++ b/cmake/AddBipedalLocomotionPythonModule.cmake
 @@ -3,6 +3,11 @@
  # BSD-3-Clause license.
- 
+
  function(add_bipedal_locomotion_python_module)
 +  # If bindings support is not enabled, add_bipedal_locomotion_python_module
 +  # is a no operation
 +  if(NOT FRAMEWORK_COMPILE_PYTHON_BINDINGS)
 +    return()
 +  endif()
- 
+
    set(options )
    set(oneValueArgs NAME)
 
@@ -211,7 +211,7 @@ index cba885bcf6..4845496cb3 100644
 @@ -91,4 +91,4 @@ if(FRAMEWORK_COMPILE_PYTHON_BINDINGS)
    install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/utils.py"
      DESTINATION ${PYTHON_INSTDIR})
-   
+
 -endif()
 \ No newline at end of file
 +endif()
@@ -233,11 +233,11 @@ index 841c4e8e30..19594cc777 100644
 @@ -31,22 +31,24 @@ if(TARGET BipedalLocomotion::RobotInterface
      AND TARGET BipedalLocomotion::RobotInterfaceYarpImplementation
      AND TARGET BipedalLocomotion::PerceptionInterfaceYarpImplementation)
- 
+
 -  set(cvnp_target_link )
 +  if(FRAMEWORK_COMPILE_PYTHON_BINDINGS)
 +    set(cvnp_target_link )
- 
+
 -  # This compiles only if pybind11 is at least v2.7.0
 -  # Indeed we need a feature in pybind that has been introduced by this commit
 -  # https://github.com/pybind/pybind11/commit/74a767d42921001fc4569ecee3b8726383c42ad4
@@ -268,5 +268,6 @@ index 841c4e8e30..19594cc777 100644
 +      set(cvnp_target_link cvnp)
 +    endif()
    endif()
- 
+
    set(H_PREFIX include/BipedalLocomotion/bindings/RobotInterface)
+   
