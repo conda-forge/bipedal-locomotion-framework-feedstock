@@ -2,6 +2,8 @@ c_compiler:
 - vs2022
 c_stdlib:
 - vs
+casadi:
+- '3.7'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -15,7 +17,7 @@ fmt:
 idyntree:
 - '15'
 libboost_devel:
-- '1.88'
+- '1.90'
 libmatio_cpp:
 - 0.3.0
 libopencv:
@@ -47,4 +49,4 @@ spdlog:
 target_platform:
 - win-64
 vtk:
-- 9.6.0
+- 9.6.1
