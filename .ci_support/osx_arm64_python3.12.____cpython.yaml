@@ -10,6 +10,8 @@ c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
 - '11.0'
+casadi:
+- '3.7'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -19,7 +21,7 @@ cxx_compiler:
 cxx_compiler_version:
 - '19'
 eigen_abi_devel:
-- 3.4.0
+- 5.0.1
 fmt:
 - '12.1'
 idyntree:
@@ -61,7 +63,7 @@ spdlog:
 target_platform:
 - osx-arm64
 vtk:
-- 9.6.0
+- 9.6.1
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
