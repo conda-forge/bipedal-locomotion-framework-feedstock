@@ -2,6 +2,8 @@ c_compiler:
 - vs2022
 c_stdlib:
 - vs
+casadi:
+- '3.7'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -9,7 +11,7 @@ channel_targets:
 cxx_compiler:
 - vs2022
 eigen_abi_devel:
-- 3.4.0
+- 5.0.1
 fmt:
 - '12.1'
 idyntree:
@@ -47,4 +49,4 @@ spdlog:
 target_platform:
 - win-64
 vtk:
-- 9.6.0
+- 9.6.1
