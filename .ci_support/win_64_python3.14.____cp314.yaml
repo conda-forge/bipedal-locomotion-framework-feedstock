@@ -1,0 +1,52 @@
+c_compiler:
+- vs2022
+c_stdlib:
+- vs
+casadi:
+- '3.7'
+channel_sources:
+- conda-forge
+channel_targets:
+- conda-forge main
+cxx_compiler:
+- vs2022
+eigen_abi_devel:
+- 5.0.1
+fmt:
+- '12.1'
+idyntree:
+- '15'
+libboost_devel:
+- '1.90'
+libmatio_cpp:
+- 0.3.0
+libopencv:
+- 4.13.0
+libosqp:
+- 1.0.0
+libyarp:
+- 3.12.2
+numpy:
+- '2'
+osqp_eigen:
+- '0.11'
+pcl:
+- 1.15.1
+pin_run_as_build:
+  python:
+    min_pin: x.x
+    max_pin: x.x
+pugixml:
+- '1.15'
+pybind11_abi:
+- '11'
+python:
+- 3.14.* *_cp314
+qhull:
+- '2020.2'
+spdlog:
+- '1.17'
+target_platform:
+- win-64
+vtk:
+- 9.6.1
