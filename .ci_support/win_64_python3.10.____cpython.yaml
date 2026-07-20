@@ -25,7 +25,7 @@ libopencv:
 libosqp:
 - 1.0.0
 libyarp:
-- 3.12.2
+- 3.12.3
 numpy:
 - '2'
 osqp_eigen:
