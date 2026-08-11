@@ -17,7 +17,7 @@ cxx_compiler:
 cxx_compiler_version:
 - '14'
 docker_image:
-- quay.io/condaforge/linux-anvil-x86_64:alma9
+- quay.io/condaforge/linux-anvil-x86_64:alma10
 eigen_abi_devel:
 - 5.0.1
 fmt:
@@ -29,11 +29,11 @@ libboost_devel:
 libmatio_cpp:
 - 0.3.0
 libopencv:
-- 4.13.0
+- 5.0.0
 libosqp:
 - 1.0.0
 librealsense:
-- '2.57'
+- '2.58'
 libyarp:
 - 3.12.2
 numpy:
