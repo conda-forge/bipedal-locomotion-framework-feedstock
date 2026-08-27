@@ -47,6 +47,7 @@ outputs:
         - idyntree
         - manif
         - libyarp
+        - libdinrail
         - tomlplusplus
         - librobometry
         - fmt
@@ -128,6 +129,7 @@ outputs:
         - pybind11-abi
         - liblie-group-controllers
         - libyarp
+        - libdinrail
         - tomlplusplus
         - idyntree
         - fmt
