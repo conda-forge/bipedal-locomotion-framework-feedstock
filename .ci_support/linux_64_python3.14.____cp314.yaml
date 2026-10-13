@@ -34,6 +34,8 @@ libosqp:
 - 1.0.0
 librealsense:
 - '2.58'
+libtrintrin:
+- 0.3.0
 libyarp:
 - 3.12.3
 numpy:
