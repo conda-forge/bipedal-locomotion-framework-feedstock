@@ -42,6 +42,8 @@ macos_machine:
 - arm64-apple-darwin20.0.0
 numpy:
 - '2'
+onnxruntime_cpp:
+- 1.32.0
 osqp_eigen:
 - '0.11'
 pcl:
@@ -53,7 +55,7 @@ pin_run_as_build:
 pugixml:
 - '1.15'
 pybind11_abi:
-- '11'
+- '12'
 python:
 - 3.14.* *_cp314
 qhull:
