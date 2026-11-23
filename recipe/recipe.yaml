@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "0.30.0"
+  version: "0.31.0"
 
 recipe:
   name: bipedal-locomotion-framework-split
@@ -9,12 +9,12 @@ recipe:
 
 source:
   url: https://github.com/gbionics/bipedal-locomotion-framework/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: bcb3932c3df7ee0ab2884cf3c40b845bb9443812ac4d0405926b5556c1098bf5
+  sha256: bff3a2691b51dcd0a68fd89578d0aff22bfb0af862ba6e5198393aa0f52f48e1
   patches:
     - patches/0001-prefer-onnxruntime-cmake-config.patch
 
 build:
-  number: 1
+  number: 0
   # onnxruntime dropped Intel macOS support: https://github.com/conda-forge/onnxruntime-feedstock/pull/206
   skip: osx and x86_64
 
